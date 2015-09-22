@@ -18,6 +18,13 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>gothamrnd-bold.ttf</string>
+		<string>gothamrnd-book.ttf</string>
+		<string>gothamrnd-light.ttf</string>
+		<string>gothamrnd-medium.ttf</string>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 </dict>

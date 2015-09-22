@@ -1,4 +1,180 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="Address" representedClassName="Address" syncable="YES">
+        <attribute name="addressType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cityId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="cityName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="countryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="houesNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="stateName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ChildCategory" representedClassName="ChildCategory" syncable="YES">
+        <attribute name="banner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cat_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="landing_content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="landing_header" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Cities" representedClassName="Cities" syncable="YES">
+        <attribute name="citiID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="citiName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CityData" representedClassName="CityData" syncable="YES">
+        <attribute name="city_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="city_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city_slug" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Country" representedClassName="Country" syncable="YES">
+        <attribute name="country_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="country_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country_slug" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES">
+        <attribute name="categoryService" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationStr" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MajorCategory" representedClassName="MajorCategory" syncable="YES">
+        <attribute name="banner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="childCategory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChildCategory" syncable="YES"/>
+    </entity>
+    <entity name="MajorSku" representedClassName="MajorSku" syncable="YES">
+        <attribute name="majorSkuName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="minorSku" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MinorSku" syncable="YES"/>
+    </entity>
+    <entity name="MerchantProfile" representedClassName="MerchantProfile" syncable="YES">
+        <attribute name="banner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="certifications" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptionStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="downLoadLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="merchant_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile_pic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quote_text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MinorSku" representedClassName="MinorSku" syncable="YES">
+        <attribute name="minorSkuName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="skus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skus" syncable="YES"/>
+    </entity>
+    <entity name="MyOrder" representedClassName="MyOrder" syncable="YES">
+        <attribute name="booking_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category_icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="no_of_quotes" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status_text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quotes" syncable="YES"/>
+    </entity>
+    <entity name="Options" representedClassName="Options" syncable="YES">
+        <attribute name="nextQuestionIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="optionStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionStr" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="QuestionRateCard" representedClassName="QuestionRateCard" syncable="YES">
+        <attribute name="added_cart" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptionStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="major_sku_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minimum_order_value" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="minor_sku_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sku_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="sku_img" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sku_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sku_price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sku_price_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sku_unit_type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Questions" representedClassName="Questions" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hintText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inputtype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="labelTxt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionDesc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sequenceNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Options" syncable="YES"/>
+    </entity>
+    <entity name="Quotes" representedClassName="Quotes" syncable="YES">
+        <attribute name="lead_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="merchant_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="merchant_image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="merchant_name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="QuotesList" representedClassName="QuotesList" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lead_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="merchant_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="merchant_image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="merchant_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="no_of_quotes" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="quote_price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="requirement" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="server_timestamp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time_delta" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="RateCard" representedClassName="RateCard" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minimum_order_value" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="majorSkus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MajorSku" syncable="YES"/>
+    </entity>
+    <entity name="SignUpDetails" representedClassName="SignUpDetails" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pasword" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Skus" representedClassName="Skus" syncable="YES">
+        <attribute name="descriptionStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skuID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="skuImg" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skuName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skuPrice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skuPriceType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skuUnitType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="States" representedClassName="States" syncable="YES">
+        <attribute name="state_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="state_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state_slug" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="VerifyNumber" representedClassName="VerifyNumber" syncable="YES">
+        <attribute name="isVerified" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-18" positionY="135" width="128" height="180"/>
+        <element name="ChildCategory" positionX="-54" positionY="9" width="128" height="150"/>
+        <element name="Cities" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="CityData" positionX="0" positionY="153" width="128" height="90"/>
+        <element name="Country" positionX="-18" positionY="135" width="128" height="90"/>
+        <element name="Location" positionX="-45" positionY="54" width="128" height="75"/>
+        <element name="MajorCategory" positionX="-63" positionY="0" width="128" height="120"/>
+        <element name="MajorSku" positionX="-18" positionY="162" width="128" height="75"/>
+        <element name="MerchantProfile" positionX="-45" positionY="135" width="128" height="180"/>
+        <element name="MinorSku" positionX="0" positionY="171" width="128" height="75"/>
+        <element name="MyOrder" positionX="-45" positionY="90" width="128" height="180"/>
+        <element name="Options" positionX="-45" positionY="81" width="128" height="90"/>
+        <element name="QuestionRateCard" positionX="-18" positionY="135" width="128" height="225"/>
+        <element name="Questions" positionX="-36" positionY="54" width="128" height="165"/>
+        <element name="Quotes" positionX="-36" positionY="108" width="128" height="105"/>
+        <element name="QuotesList" positionX="-27" positionY="126" width="128" height="210"/>
+        <element name="RateCard" positionX="-36" positionY="144" width="128" height="90"/>
+        <element name="SignUpDetails" positionX="9" positionY="162" width="128" height="135"/>
+        <element name="Skus" positionX="18" positionY="180" width="128" height="150"/>
+        <element name="States" positionX="-9" positionY="144" width="128" height="90"/>
+        <element name="VerifyNumber" positionX="-18" positionY="135" width="128" height="75"/>
+    </elements>
 </model>
